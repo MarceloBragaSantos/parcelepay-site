@@ -157,7 +157,7 @@ export default function Hero() {
         transition={{ duration: 3, repeat: Infinity }}
         className="absolute top-24 right-8 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-bold shadow-lg hidden lg:block"
       >
-        Até 21x sem juros
+        Parcelamento em até 21x
       </motion.div>
     </section>
   );

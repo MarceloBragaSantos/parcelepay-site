@@ -76,7 +76,7 @@ function DestaqueSplit() {
               { val: "até 76%",    label: "Redução de imposto no Simples" },
               { val: "100 dias",   label: "Para designar a agenda de recebíveis" },
               { val: "100% legal", label: "BCB + conformidade com a RFB" },
-              { val: "21x",        label: "Parcelamento sem juros" },
+              { val: "21x",        label: "Parcelamento máximo" },
             ].map((s) => (
               <div key={s.label} className="bg-background border border-border rounded-2xl p-6 text-center">
                 <p className="text-2xl font-black text-primary mb-2">{s.val}</p>

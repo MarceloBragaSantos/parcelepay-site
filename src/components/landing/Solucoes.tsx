@@ -73,7 +73,7 @@ function PaymentsMockup() {
       </div>
 
       <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-        Até 21x sem juros
+        Até 21x
       </div>
     </div>
   );
