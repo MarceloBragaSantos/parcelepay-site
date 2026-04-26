@@ -14,7 +14,7 @@ const passos = [
     numero: "02",
     titulo: "Split distribui o valor",
     descricao:
-      "O valor é dividido entre os participantes da operação (empresa, sócios, prestadores de serviço). Cada um emite sua própria Nota Fiscal referente à sua parte.",
+      "O estabelecimento tem até 100 dias após cada transação para designar a fração da agenda de recebíveis a cada participante. Cada um emite sua própria Nota Fiscal referente à sua parte.",
   },
   {
     icon: TrendingDown,
@@ -104,13 +104,16 @@ export default function ComoFunciona() {
           <p className="text-primary font-bold text-lg mb-2">
             Exemplo prático
           </p>
-          <p className="text-white/80 text-sm leading-relaxed">
+          <p className="text-white/80 text-sm leading-relaxed mb-4">
             Um restaurante fatura R$150.000/mês. Sem split, todo esse valor conta para o
             Simples → 4ª faixa → alíquota efetiva ~13% → R$19.500/mês de imposto.
             Com 80% splitado para o sócio-prestador, o EC recebe R$30.000/mês → 1ª faixa → 6%
             → R$1.800/mês de imposto.{" "}
             <strong className="text-primary">Economia: ~R$17.700/mês.</strong>
           </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/15 border border-primary/30 text-primary text-sm font-semibold">
+            ⏱ Até 100 dias após cada transação para designar a fração de recebíveis a cada participante
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Mail } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -51,7 +51,7 @@ export default function Footer() {
               {[
                 { label: "Início", href: "#home" },
                 { label: "Como funciona", href: "#como-funciona" },
-                { label: "Calculadora", href: "#calculadora" },
+                { label: "Calculadora", href: "#calculadora-cta" },
                 { label: "Parceiros", href: "#parceiros" },
                 { label: "Área do Cliente", href: "https://cliente.parcelepay.com.br/login" },
               ].map((item) => (
@@ -93,25 +93,24 @@ export default function Footer() {
           >
             <h3 className="text-white font-semibold mb-4">Contato</h3>
             <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <div className="text-white/60 text-sm leading-relaxed">
-                  <p>Shopping Crystal Mall</p>
-                  <p>Estr. dos Bandeirantes, 7967</p>
-                  <p>Sala 204 — Jacarepaguá</p>
-                  <p>Rio de Janeiro — RJ, CEP 22780-085</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                <a href="tel:+5521997902401" className="text-white/60 text-sm hover:text-primary transition-colors">
-                  (21) 99790-2401
-                </a>
-              </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
                 <a href="mailto:contato@parcelepay.com.br" className="text-white/60 text-sm hover:text-primary transition-colors">
                   contato@parcelepay.com.br
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-primary flex-shrink-0">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L.057 23.428a.5.5 0 00.609.61l5.753-1.505A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.869 9.869 0 01-5.031-1.376l-.36-.214-3.733.977.999-3.645-.235-.374A9.861 9.861 0 012.118 12C2.118 6.52 6.52 2.118 12 2.118S21.882 6.52 21.882 12 17.48 21.882 12 21.882z"/>
+                </svg>
+                <a
+                  href="https://wa.me/5521997902401"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 text-sm hover:text-primary transition-colors"
+                >
+                  (21) 99790-2401
                 </a>
               </div>
             </div>

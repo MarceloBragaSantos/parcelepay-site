@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const numeros = [
-  { valor: "12+", label: "anos de mercado", desc: "Infraestrutura Cappta desde 2012" },
+  { valor: "12+", label: "anos de mercado", desc: "Atuando no mercado de pagamentos desde 2012" },
   { valor: "200k+", label: "estabelecimentos", desc: "ECs ativos em todo o Brasil" },
   { valor: "20+", label: "adquirentes", desc: "Cielo, Rede, Stone, GetNet e mais" },
   { valor: "100%", label: "regulamentado BC", desc: "Aprovado pelo Banco Central do Brasil" },
@@ -21,7 +21,7 @@ export default function NumerosSociais() {
           className="text-center mb-10"
         >
           <p className="text-white/50 text-sm uppercase tracking-widest font-medium">
-            Infraestrutura Cappta · Experiência comprovada
+            Experiência comprovada em meios de pagamento
           </p>
         </motion.div>
 

@@ -66,7 +66,7 @@ export default function Solucoes() {
           <div className="relative rounded-2xl overflow-hidden bg-secondary flex items-center justify-center min-h-[340px]">
             <Image
               src="/assets/cappta-pos-composite.png"
-              alt="Maquininhas Cappta — P2, L300, A910"
+              alt="Maquininhas de pagamento — P2, L300, A910"
               width={700}
               height={500}
               className="object-contain w-full h-full"
@@ -143,7 +143,7 @@ export default function Solucoes() {
           <div className="order-1 lg:order-2 relative rounded-2xl overflow-hidden bg-secondary flex items-center justify-center min-h-[340px]">
             <Image
               src="/assets/cappta-banking.png"
-              alt="App Conta Digital Cappta"
+              alt="App Conta Digital ParcelePay"
               width={600}
               height={700}
               className="object-contain w-full h-full max-h-[420px]"

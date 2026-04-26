@@ -83,7 +83,7 @@ function EconomiaBar({ pct }: { pct: number }) {
   return (
     <div className="mt-3">
       <div className="flex justify-between items-center mb-1">
-        <span className="text-xs text-muted-foreground">Economia tributária c/ split 80%</span>
+        <span className="text-xs text-muted-foreground">Economia tributária</span>
         <span className="text-xs font-bold text-primary">até {pct}%</span>
       </div>
       <div className="h-1.5 rounded-full bg-border overflow-hidden">
