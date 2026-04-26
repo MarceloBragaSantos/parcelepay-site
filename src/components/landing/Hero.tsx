@@ -1,43 +1,74 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { ArrowRight, TrendingDown, Shield, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-16 bg-secondary overflow-hidden">
-      {/* Decorative background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-2xl" />
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-      </div>
+    <section id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+      {/* Video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-secondary/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-secondary/60 to-transparent" />
 
       <div className="container mx-auto px-4 max-w-6xl relative z-10 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <Badge className="mb-6 bg-primary/20 text-primary border-primary/30 text-sm px-3 py-1">
-              ✦ Tecnologia de Split de Pagamento
-            </Badge>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <Badge className="mb-6 bg-primary/20 text-primary border-primary/30 text-sm px-3 py-1">
+                ✦ Tecnologia de Split de Pagamento
+              </Badge>
+            </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            <motion.h1
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               Reduza até{" "}
               <span className="text-primary">40% dos impostos</span>{" "}
               da sua empresa
-            </h1>
+            </motion.h1>
 
-            <p className="text-lg text-white/70 mb-8 leading-relaxed">
+            <motion.p
+              className="text-lg text-white/80 mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               Empresas do Simples Nacional pagam menos imposto com o split de
-              pagamento. O valor splitado não conta como receita do EC — mantendo
-              sua empresa em faixas tributárias menores.
-            </p>
+              pagamento. O valor splitado não entra como receita do EC —
+              mantendo sua empresa em faixas tributárias menores.
+              Parcelamento em até{" "}
+              <strong className="text-primary">21x sem juros</strong>.
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
               <a
                 href="#calculadora"
                 className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-bold text-lg hover:opacity-90 transition-opacity"
@@ -51,12 +82,17 @@ export default function Hero() {
               >
                 Como funciona
               </a>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-3 gap-4">
+            <motion.div
+              className="grid grid-cols-3 gap-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
               {[
                 { icon: TrendingDown, label: "Redução de imposto", value: "até 40%" },
-                { icon: Shield, label: "Split legal e regulamentado", value: "100%" },
+                { icon: Shield, label: "Split regulamentado BC", value: "100% legal" },
                 { icon: Zap, label: "Habilitação em", value: "48 horas" },
               ].map((item) => (
                 <div key={item.label} className="text-center">
@@ -65,57 +101,69 @@ export default function Hero() {
                   <p className="text-xs text-white/50">{item.label}</p>
                 </div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Visual card */}
-          <div className="hidden lg:block">
-            <div className="relative">
-              <div className="bg-white/5 backdrop-blur rounded-2xl border border-white/10 p-8 space-y-4">
-                <p className="text-white/50 text-sm font-medium uppercase tracking-wide">
-                  Simulação em tempo real
-                </p>
+          {/* Preview card */}
+          <motion.div
+            className="hidden lg:block"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8 space-y-4">
+              <p className="text-white/50 text-sm font-medium uppercase tracking-wide">
+                Simulação em tempo real
+              </p>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
-                    <p className="text-red-400 text-xs font-medium mb-1">CENÁRIO ATUAL</p>
-                    <p className="text-white text-2xl font-bold">R$ 18.000</p>
-                    <p className="text-white/40 text-xs">/mês em impostos</p>
-                    <div className="mt-2 px-2 py-0.5 rounded bg-red-500/20 text-red-400 text-xs inline-block">
-                      4ª faixa — 8,42% efetivo
-                    </div>
-                  </div>
-                  <div className="bg-primary/10 border border-primary/20 rounded-xl p-4">
-                    <p className="text-primary text-xs font-medium mb-1">COM PARCELEPAY</p>
-                    <p className="text-white text-2xl font-bold">R$ 9.200</p>
-                    <p className="text-white/40 text-xs">/mês em impostos</p>
-                    <div className="mt-2 px-2 py-0.5 rounded bg-primary/20 text-primary text-xs inline-block">
-                      3ª faixa — 5,14% efetivo
-                    </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                  <p className="text-red-400 text-xs font-medium mb-1">CENÁRIO ATUAL</p>
+                  <p className="text-white text-2xl font-bold">R$ 18.000</p>
+                  <p className="text-white/40 text-xs">/mês em impostos</p>
+                  <div className="mt-2 px-2 py-0.5 rounded bg-red-500/20 text-red-400 text-xs inline-block">
+                    4ª faixa — 8,42% efetivo
                   </div>
                 </div>
-
-                <div className="bg-primary/15 border border-primary/30 rounded-xl p-5">
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <p className="text-white/60 text-sm mb-1">Economia líquida mensal</p>
-                      <p className="text-primary text-4xl font-bold">R$ 7.300</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-white/60 text-xs mb-1">Anual</p>
-                      <p className="text-white text-xl font-bold">R$ 87.600</p>
-                    </div>
+                <div className="bg-primary/10 border border-primary/20 rounded-xl p-4">
+                  <p className="text-primary text-xs font-medium mb-1">COM PARCELEPAY</p>
+                  <p className="text-white text-2xl font-bold">R$ 9.200</p>
+                  <p className="text-white/40 text-xs">/mês em impostos</p>
+                  <div className="mt-2 px-2 py-0.5 rounded bg-primary/20 text-primary text-xs inline-block">
+                    3ª faixa — 5,14% efetivo
                   </div>
                 </div>
-
-                <p className="text-white/30 text-xs text-center">
-                  Simulação: faturamento R$150k/mês, 40% splitado, Serviços (Anexo III)
-                </p>
               </div>
+
+              <div className="bg-primary/15 border border-primary/30 rounded-xl p-5">
+                <div className="flex items-end justify-between">
+                  <div>
+                    <p className="text-white/60 text-sm mb-1">Economia líquida mensal</p>
+                    <p className="text-primary text-4xl font-bold">R$ 7.300</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-white/60 text-xs mb-1">Anual</p>
+                    <p className="text-white text-xl font-bold">R$ 87.600</p>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-white/30 text-xs text-center">
+                Simulação: faturamento R$150k/mês, 40% splitado, Serviços (Anexo III)
+              </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
+
+      {/* Floating badge */}
+      <motion.div
+        animate={{ y: [-8, 8, -8] }}
+        transition={{ duration: 3, repeat: Infinity }}
+        className="absolute top-24 right-8 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-bold shadow-lg hidden lg:block"
+      >
+        Até 21x sem juros
+      </motion.div>
     </section>
   );
 }
