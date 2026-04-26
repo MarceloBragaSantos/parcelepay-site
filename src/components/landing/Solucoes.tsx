@@ -257,55 +257,14 @@ function PlataformaContasIllustration() {
 
 function WhitelabelIllustration() {
   return (
-    <div className="relative bg-secondary rounded-xl overflow-hidden h-44 select-none">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
-
-      <div className="absolute top-3 right-3">
-        <div className="bg-primary text-primary-foreground px-2 py-0.5 rounded-full text-[8px] font-bold">
-          Sua marca, nosso motor
-        </div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center gap-3 px-4 pb-3">
-        {/* Mini phone */}
-        <div className="w-20 bg-[#12122a] rounded-2xl border-2 border-white/20 shadow-xl overflow-hidden">
-          <div className="h-0.5 bg-white/10 w-8 rounded-full mx-auto mt-1.5 mb-1" />
-          <div className="px-2 pb-2">
-            <div className="bg-white/10 rounded-lg p-1.5 mb-1.5 text-center">
-              <p className="text-white/30 text-[7px] italic font-medium">SUA MARCA AQUI</p>
-            </div>
-            <div className="bg-primary/10 rounded p-1 mb-1">
-              <p className="text-white/60 text-[6px]">Saldo</p>
-              <p className="text-primary text-[9px] font-bold">R$45.200</p>
-            </div>
-            <div className="space-y-0.5">
-              {["+R$8.400", "+R$2.100"].map((v, i) => (
-                <div key={i} className="flex justify-between">
-                  <div className="w-1 h-1 rounded-full bg-primary mt-0.5" />
-                  <span className="text-primary text-[7px] font-bold">{v}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Mini machine */}
-        <div className="w-16 bg-[#12122a] rounded-xl border-2 border-white/20 shadow-xl overflow-hidden">
-          <div className="bg-black/60 m-1.5 rounded p-1.5">
-            <p className="text-primary text-[9px] font-mono font-bold text-center">R$890</p>
-          </div>
-          <div className="px-1.5 py-1 text-center">
-            <p className="text-white/25 text-[7px] italic">SUA MARCA AQUI</p>
-          </div>
-          <div className="grid grid-cols-3 gap-px px-1.5 pb-1.5">
-            {[1, 2, 3, 4, 5, 6].map((k) => (
-              <div key={k} className="bg-white/10 rounded text-center py-px">
-                <span className="text-white/40 text-[6px]">{k}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <div className="relative bg-secondary rounded-xl overflow-hidden h-44 select-none flex items-center justify-center">
+      <Image
+        src="/assets/cappta-pos-composite.png"
+        alt="Maquininha e celular com sua marca"
+        width={700}
+        height={500}
+        className="object-contain w-full h-full"
+      />
     </div>
   );
 }
