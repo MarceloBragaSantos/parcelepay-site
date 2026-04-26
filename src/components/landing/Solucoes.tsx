@@ -3,51 +3,15 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, CreditCard, Banknote, Code2, Building, Receipt } from "lucide-react";
+import { Check, Code2, Receipt } from "lucide-react";
 import Image from "next/image";
 
-const maquinas = [
-  { nome: "P2", img: "/assets/p2-machine.png", desc: "Compacta e portátil" },
-  { nome: "L300", img: "/assets/l300-machine.png", desc: "Display touchscreen" },
-  { nome: "A910", img: "/assets/a910-machine.png", desc: "Android completo" },
-];
-
-const produtos = [
+const complementares = [
   {
-    icon: CreditCard,
-    titulo: "Payments",
-    tagline: "Aceite qualquer pagamento. Em qualquer formato. Com split automático.",
-    descricao: "Débito, crédito, PIX, boleto, link de pagamento e parcelamento em até 21x — tudo integrado, tudo rastreado.",
-    features: [
-      "Parcelamento em até 21x",
-      "PIX instantâneo",
-      "Link de pagamento",
-      "Boleto bancário",
-      "Split de agenda automático",
-      "Anti-fraude incluído",
-    ],
-    highlight: "PIX: 1,55% | Cartão: a partir de 2,80%",
-  },
-  {
-    icon: Banknote,
-    titulo: "Banking",
-    tagline: "Uma conta digital feita para quem vende muito e quer controle total.",
-    descricao: "Gerencie agenda financeira, faça PIX e TED, e acompanhe cada centavo da sua operação em um único lugar.",
-    features: [
-      "Conta digital com mensalidade",
-      "PIX e TED",
-      "Gestão de agenda financeira",
-      "Pagamento de boletos",
-      "Cartão virtual",
-      "Controle via app",
-    ],
-    highlight: "Conta com mensalidade fixa",
-  },
-  {
-    icon: Building,
+    icon: Code2,
     titulo: "Backoffice",
-    tagline: "Gestão completa da sua operação de pagamentos — em tempo real.",
-    descricao: "Portal white-label com relatórios, conciliação automática e controle de estabelecimentos. Tudo no painel, nada no Excel.",
+    tagline: "Gestão completa da sua operação — em tempo real.",
+    descricao: "Portal white-label com relatórios, conciliação automática e controle de estabelecimentos.",
     features: [
       "Portal de gestão white-label",
       "Relatórios e conciliação",
@@ -62,14 +26,14 @@ const produtos = [
     icon: Receipt,
     titulo: "Plataforma de Contas",
     tagline: "Seu cliente paga contas no seu estabelecimento. Você fatura.",
-    descricao: "Ofereça pagamento de contas com cartão direto no seu caixa — e transforme o EC em destino de fluxo de clientes.",
+    descricao: "Pagamento de contas com cartão instalado no EC — transforma o estabelecimento em destino de fluxo.",
     features: [
       "Pagamento de contas com cartão",
       "Instalado no estabelecimento",
       "Atrai clientes ao EC",
       "Aumenta ticket médio",
       "Fácil de operar",
-      "Sem necessidade de integração complexa",
+      "Sem integração complexa",
     ],
     highlight: "Mais clientes no seu estabelecimento",
   },
@@ -79,7 +43,7 @@ export default function Solucoes() {
   return (
     <section id="solucoes" className="py-20 bg-background">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-14">
+        <div className="text-center mb-16">
           <Badge className="mb-4 bg-primary/10 text-secondary border-primary/20">
             Ecossistema completo
           </Badge>
@@ -91,36 +55,105 @@ export default function Solucoes() {
           </p>
         </div>
 
-        {/* Máquinas */}
+        {/* Payments — featured */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="flex justify-center gap-8 mb-16 flex-wrap"
+          className="grid lg:grid-cols-2 gap-10 items-center mb-20"
         >
-          {maquinas.map((m, i) => (
-            <motion.div
-              key={m.nome}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8 }}
-              className="text-center"
-            >
-              <div className="w-32 h-44 relative mx-auto mb-3">
-                <Image src={m.img} alt={`Máquina ${m.nome}`} fill className="object-contain drop-shadow-xl" />
-              </div>
-              <p className="font-bold text-secondary">{m.nome}</p>
-              <p className="text-xs text-muted-foreground">{m.desc}</p>
-            </motion.div>
-          ))}
+          <div className="relative rounded-2xl overflow-hidden bg-secondary flex items-center justify-center min-h-[340px]">
+            <Image
+              src="/assets/cappta-pos-composite.png"
+              alt="Maquininhas Cappta — P2, L300, A910"
+              width={700}
+              height={500}
+              className="object-contain w-full h-full"
+            />
+          </div>
+
+          <div>
+            <Badge className="mb-3 bg-primary/10 text-secondary border-primary/20">Payments</Badge>
+            <h3 className="text-2xl md:text-3xl font-bold text-secondary mb-2">
+              Aceite qualquer pagamento.{" "}
+              <span className="text-primary">Com split automático.</span>
+            </h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Débito, crédito, PIX, boleto, link de pagamento e parcelamento em até 21x —
+              tudo integrado, com split de agenda embutido em cada transação.
+            </p>
+            <ul className="space-y-2 mb-6">
+              {[
+                "Parcelamento em até 21x",
+                "PIX instantâneo",
+                "Link de pagamento com recorrência",
+                "Boleto bancário",
+                "Split de agenda automático",
+                "Anti-fraude incluído",
+                "20+ adquirentes (Cielo, Rede, Stone, GetNet…)",
+              ].map((f) => (
+                <li key={f} className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="inline-block px-4 py-2 rounded-lg bg-primary/10 text-secondary text-sm font-medium border border-primary/20">
+              PIX: 1,55% &nbsp;|&nbsp; Cartão: a partir de 2,80%
+            </div>
+          </div>
         </motion.div>
 
-        {/* Produtos */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {produtos.map((produto, i) => (
+        {/* Banking — featured (reversed) */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="grid lg:grid-cols-2 gap-10 items-center mb-20"
+        >
+          <div className="order-2 lg:order-1">
+            <Badge className="mb-3 bg-primary/10 text-secondary border-primary/20">Banking</Badge>
+            <h3 className="text-2xl md:text-3xl font-bold text-secondary mb-2">
+              Uma conta digital feita para{" "}
+              <span className="text-primary">quem vende muito.</span>
+            </h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Gerencie agenda financeira, faça PIX e TED, e acompanhe cada centavo
+              da sua operação em um único lugar.
+            </p>
+            <ul className="space-y-2 mb-6">
+              {[
+                "Conta digital com mensalidade",
+                "PIX e TED",
+                "Gestão de agenda financeira",
+                "Pagamento de boletos",
+                "Cartão virtual",
+                "Controle total via app",
+              ].map((f) => (
+                <li key={f} className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="order-1 lg:order-2 relative rounded-2xl overflow-hidden bg-secondary flex items-center justify-center min-h-[340px]">
+            <Image
+              src="/assets/cappta-banking.png"
+              alt="App Conta Digital Cappta"
+              width={600}
+              height={700}
+              className="object-contain w-full h-full max-h-[420px]"
+            />
+          </div>
+        </motion.div>
+
+        {/* Complementares — 2 cards */}
+        <div className="grid md:grid-cols-2 gap-6 mb-10">
+          {complementares.map((produto, i) => (
             <motion.div
               key={produto.titulo}
               initial={{ opacity: 0, y: 30 }}
@@ -131,7 +164,7 @@ export default function Solucoes() {
             >
               <Card className="h-full hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/50">
                 <CardHeader>
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors group-hover:scale-110 duration-300">
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                     <produto.icon className="w-7 h-7 text-primary" />
                   </div>
                   <CardTitle className="group-hover:text-primary transition-colors">
@@ -158,7 +191,7 @@ export default function Solucoes() {
           ))}
         </div>
 
-        <div className="text-center mt-10">
+        <div className="text-center">
           <a
             href="#contato"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-secondary text-white font-semibold hover:opacity-90 transition-opacity"

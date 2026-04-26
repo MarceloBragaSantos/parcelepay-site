@@ -1,5 +1,6 @@
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
+import NumerosSociais from "@/components/landing/NumerosSociais";
 import ComoFunciona from "@/components/landing/ComoFunciona";
 import Calculadora from "@/components/calculadora/Calculadora";
 import Solucoes from "@/components/landing/Solucoes";
@@ -14,6 +15,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <NumerosSociais />
       <ComoFunciona />
       <Calculadora />
       <Solucoes />

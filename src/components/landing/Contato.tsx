@@ -28,7 +28,7 @@ export default function Contato() {
 
             <div className="space-y-4">
               {[
-                { icon: Phone, label: "(21) 99754-2309", href: "tel:+5521997542309" },
+                { icon: Phone, label: "(21) 99790-2401", href: "tel:+5521997902401" },
                 { icon: Mail, label: "contato@parcelepay.com.br", href: "mailto:contato@parcelepay.com.br" },
                 {
                   icon: MapPin,
