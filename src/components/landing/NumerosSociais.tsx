@@ -6,7 +6,7 @@ const numeros = [
   { valor: "12+", label: "anos de mercado", desc: "Infraestrutura Cappta desde 2012" },
   { valor: "200k+", label: "estabelecimentos", desc: "ECs ativos em todo o Brasil" },
   { valor: "20+", label: "adquirentes", desc: "Cielo, Rede, Stone, GetNet e mais" },
-  { valor: "R$ bi", label: "em transações", desc: "Processados com segurança e estabilidade" },
+  { valor: "100%", label: "regulamentado BC", desc: "Aprovado pelo Banco Central do Brasil" },
 ];
 
 export default function NumerosSociais() {

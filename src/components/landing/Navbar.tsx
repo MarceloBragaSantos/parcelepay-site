@@ -7,7 +7,7 @@ import Image from "next/image";
 const links = [
   { label: "Início", href: "#home" },
   { label: "Como funciona", href: "#como-funciona" },
-  { label: "Calculadora", href: "#calculadora" },
+  { label: "Calculadora", href: "#calculadora-cta" },
   { label: "Soluções", href: "#solucoes" },
   { label: "Segmentos", href: "#segmentos" },
   { label: "Parceiros", href: "#parceiros" },

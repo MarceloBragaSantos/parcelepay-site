@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { CreditCard, GitBranch, TrendingDown, Clock } from "lucide-react";
+import { CreditCard, GitBranch, TrendingDown, Clock, ShieldCheck, FileText } from "lucide-react";
 
 const passos = [
   {
@@ -12,9 +12,9 @@ const passos = [
   {
     icon: GitBranch,
     numero: "02",
-    titulo: "Valor fica disponível para split",
+    titulo: "Split distribui o valor",
     descricao:
-      "O valor da venda fica disponível por até 100 dias na plataforma ParcelePay para ser splitado entre os participantes da operação (sócios, prestadores, serviços).",
+      "O valor é dividido entre os participantes da operação (empresa, sócios, prestadores de serviço). Cada um emite sua própria Nota Fiscal referente à sua parte.",
   },
   {
     icon: TrendingDown,
@@ -41,15 +41,16 @@ export default function ComoFunciona() {
             Transparência total
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
-            Como o split reduz seus impostos?
+            Como o split reduz seus impostos?{" "}
+            <span className="text-primary">(De forma 100% legal)</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Um mecanismo legal, regulamentado pelo Banco Central, que já é usado por
-            grandes redes. Agora acessível para empresas do Simples Nacional.
+            Um mecanismo regulamentado pelo Banco Central e em plena conformidade com as
+            normas da Receita Federal do Brasil — já usado por grandes redes do país.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {passos.map((passo, i) => (
             <div key={passo.numero} className="relative group">
               {i < passos.length - 1 && (
@@ -73,16 +74,42 @@ export default function ComoFunciona() {
           ))}
         </div>
 
-        <div className="mt-12 p-6 rounded-2xl bg-secondary text-white max-w-3xl mx-auto text-center">
+        {/* Legal shield */}
+        <div className="grid md:grid-cols-2 gap-6 mb-10">
+          <div className="flex gap-4 p-5 rounded-xl border border-primary/20 bg-primary/5">
+            <ShieldCheck className="w-8 h-8 text-primary flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-secondary mb-1">Regulamentado pelo Banco Central</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                O split de agenda é uma modalidade de liquidação prevista nas normas do
+                Banco Central do Brasil (Resolução BCB nº 150). A operação é auditável,
+                rastreável e 100% dentro da legislação vigente.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-4 p-5 rounded-xl border border-primary/20 bg-primary/5">
+            <FileText className="w-8 h-8 text-primary flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-secondary mb-1">Cada participante emite sua NF</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Cada empresa ou pessoa que recebe uma parte do split deve emitir sua
+                Nota Fiscal correspondente. A redução tributária é consequência natural
+                da divisão correta da receita entre os participantes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-secondary text-white max-w-3xl mx-auto text-center">
           <p className="text-primary font-bold text-lg mb-2">
             Exemplo prático
           </p>
           <p className="text-white/80 text-sm leading-relaxed">
             Um restaurante fatura R$150.000/mês. Sem split, todo esse valor conta para o
-            Simples → 4ª faixa → alíquota efetiva ~8,4% → R$12.600/mês de imposto.
-            Com 40% splitado, o EC recebe R$90.000/mês → 3ª faixa → alíquota efetiva ~5,1%
-            → R$4.600/mês de imposto.{" "}
-            <strong className="text-primary">Economia: ~R$8.000/mês.</strong>
+            Simples → 4ª faixa → alíquota efetiva ~13% → R$19.500/mês de imposto.
+            Com 80% splitado para o sócio-prestador, o EC recebe R$30.000/mês → 1ª faixa → 6%
+            → R$1.800/mês de imposto.{" "}
+            <strong className="text-primary">Economia: ~R$17.700/mês.</strong>
           </p>
         </div>
       </div>

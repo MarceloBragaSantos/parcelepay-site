@@ -110,45 +110,41 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8 space-y-4">
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 space-y-4">
               <p className="text-white/50 text-sm font-medium uppercase tracking-wide">
-                Simulação em tempo real
+                Quanto você economizaria com split de 80%?
               </p>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
-                  <p className="text-red-400 text-xs font-medium mb-1">CENÁRIO ATUAL</p>
-                  <p className="text-white text-2xl font-bold">R$ 18.000</p>
-                  <p className="text-white/40 text-xs">/mês em impostos</p>
-                  <div className="mt-2 px-2 py-0.5 rounded bg-red-500/20 text-red-400 text-xs inline-block">
-                    4ª faixa — 8,42% efetivo
-                  </div>
-                </div>
-                <div className="bg-primary/10 border border-primary/20 rounded-xl p-4">
-                  <p className="text-primary text-xs font-medium mb-1">COM PARCELEPAY</p>
-                  <p className="text-white text-2xl font-bold">R$ 9.200</p>
-                  <p className="text-white/40 text-xs">/mês em impostos</p>
-                  <div className="mt-2 px-2 py-0.5 rounded bg-primary/20 text-primary text-xs inline-block">
-                    3ª faixa — 5,14% efetivo
-                  </div>
-                </div>
+              {/* Table header */}
+              <div className="grid grid-cols-4 gap-2 text-xs text-white/40 font-medium pb-2 border-b border-white/10">
+                <span>Faturamento</span>
+                <span className="text-center">Simples atual</span>
+                <span className="text-center">Com split</span>
+                <span className="text-center text-primary">Economia</span>
               </div>
 
-              <div className="bg-primary/15 border border-primary/30 rounded-xl p-5">
-                <div className="flex items-end justify-between">
-                  <div>
-                    <p className="text-white/60 text-sm mb-1">Economia líquida mensal</p>
-                    <p className="text-primary text-4xl font-bold">R$ 7.300</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-white/60 text-xs mb-1">Anual</p>
-                    <p className="text-white text-xl font-bold">R$ 87.600</p>
-                  </div>
+              {/* Rows */}
+              {[
+                { fat: "R$100k/mês", atual: "R$13.000", split: "R$3.500", eco: "R$9.500" },
+                { fat: "R$200k/mês", atual: "R$31.500", split: "R$8.000", eco: "R$23.500" },
+                { fat: "R$300k/mês", atual: "R$52.500", split: "R$12.600", eco: "R$39.900" },
+              ].map((row, i) => (
+                <div key={i} className="grid grid-cols-4 gap-2 items-center py-2 border-b border-white/5">
+                  <span className="text-white/70 text-sm font-medium">{row.fat}</span>
+                  <span className="text-center text-red-400 text-sm font-semibold">{row.atual}</span>
+                  <span className="text-center text-white/60 text-sm">{row.split}</span>
+                  <span className="text-center text-primary text-sm font-bold">{row.eco}</span>
                 </div>
+              ))}
+
+              <div className="bg-primary/15 border border-primary/30 rounded-xl p-4 text-center">
+                <p className="text-white/60 text-xs mb-1">Empresa de R$300k/mês economiza até</p>
+                <p className="text-primary text-3xl font-black">R$ 478.800/ano</p>
               </div>
 
-              <p className="text-white/30 text-xs text-center">
-                Simulação: faturamento R$150k/mês, 40% splitado, Serviços (Anexo III)
+              <p className="text-white/25 text-xs text-center leading-relaxed">
+                Serviços (Anexo III), split 80%. Inclui taxa de serviço.{" "}
+                <a href="#calculadora-cta" className="text-primary/60 underline">Calcule para seu negócio →</a>
               </p>
             </div>
           </motion.div>
