@@ -45,9 +45,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Reduza até{" "}
-              <span className="text-primary">40% dos impostos</span>{" "}
-              da sua empresa
+              Pague menos imposto.{" "}
+              <span className="text-primary">Venda mais.</span>{" "}
+              Cresça no Simples Nacional.
             </motion.h1>
 
             <motion.p
@@ -56,11 +56,10 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Empresas do Simples Nacional pagam menos imposto com o split de
-              pagamento. O valor splitado não entra como receita do EC —
-              mantendo sua empresa em faixas tributárias menores.
+              A ParcelePay usa o split de agenda para reduzir sua base tributável
+              automaticamente — sem mudar CNPJ, sem burocracia, sem custo extra.
               Parcelamento em até{" "}
-              <strong className="text-primary">21x sem juros</strong>.
+              <strong className="text-primary">21x</strong>.
             </motion.p>
 
             <motion.div

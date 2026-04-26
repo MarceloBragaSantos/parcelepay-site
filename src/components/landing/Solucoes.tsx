@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, CreditCard, Banknote, Code2, Building } from "lucide-react";
+import { Check, CreditCard, Banknote, Code2, Building, Receipt } from "lucide-react";
 import Image from "next/image";
 
 const maquinas = [
@@ -15,31 +15,63 @@ const maquinas = [
 const produtos = [
   {
     icon: CreditCard,
-    titulo: "Gateway de Pagamentos",
-    descricao: "Solução completa para processar pagamentos online e presencial",
-    features: ["Integração via API", "Checkout personalizado", "Parcelamento até 21x", "Anti-fraude incluído", "PIX instantâneo", "Split de agenda"],
+    titulo: "Payments",
+    tagline: "Aceite qualquer pagamento. Em qualquer formato. Com split automático.",
+    descricao: "Débito, crédito, PIX, boleto, link de pagamento e parcelamento em até 21x — tudo integrado, tudo rastreado.",
+    features: [
+      "Parcelamento em até 21x",
+      "PIX instantâneo",
+      "Link de pagamento",
+      "Boleto bancário",
+      "Split de agenda automático",
+      "Anti-fraude incluído",
+    ],
     highlight: "PIX: 1,55% | Cartão: a partir de 2,80%",
   },
   {
     icon: Banknote,
-    titulo: "Conta Digital",
-    descricao: "Conta gratuita com tudo que sua empresa precisa",
-    features: ["Conta 100% gratuita", "PIX e TED sem taxas", "Payout instantâneo", "Pagamento de boletos", "Cartão virtual", "Controle total via app"],
-    highlight: "Zero anuidade • Zero manutenção",
-  },
-  {
-    icon: Code2,
-    titulo: "API de Integração",
-    descricao: "Integre pagamentos em qualquer sistema",
-    features: ["Documentação completa", "SDK múltiplas linguagens", "Webhook em tempo real", "Sandbox para testes", "Suporte técnico dedicado", "Implementação rápida"],
-    highlight: "Integração em minutos",
+    titulo: "Banking",
+    tagline: "Uma conta digital feita para quem vende muito e quer controle total.",
+    descricao: "Gerencie agenda financeira, faça PIX e TED, e acompanhe cada centavo da sua operação em um único lugar.",
+    features: [
+      "Conta digital com mensalidade",
+      "PIX e TED",
+      "Gestão de agenda financeira",
+      "Pagamento de boletos",
+      "Cartão virtual",
+      "Controle via app",
+    ],
+    highlight: "Conta com mensalidade fixa",
   },
   {
     icon: Building,
-    titulo: "Software PDV/POS",
-    descricao: "Sistema completo para restaurantes e lojas",
-    features: ["Retaguarda na nuvem", "App para restaurantes", "Controle de estoque", "Relatórios completos", "Integração com pagamentos", "Suporte especializado"],
-    highlight: "Retaguarda: R$ 99/mês • App: R$ 19,90",
+    titulo: "Backoffice",
+    tagline: "Gestão completa da sua operação de pagamentos — em tempo real.",
+    descricao: "Portal white-label com relatórios, conciliação automática e controle de estabelecimentos. Tudo no painel, nada no Excel.",
+    features: [
+      "Portal de gestão white-label",
+      "Relatórios e conciliação",
+      "Controle de estabelecimentos",
+      "API de integração",
+      "Webhook em tempo real",
+      "Suporte técnico dedicado",
+    ],
+    highlight: "Integração em minutos",
+  },
+  {
+    icon: Receipt,
+    titulo: "Plataforma de Contas",
+    tagline: "Seu cliente paga contas no seu estabelecimento. Você fatura.",
+    descricao: "Ofereça pagamento de contas com cartão direto no seu caixa — e transforme o EC em destino de fluxo de clientes.",
+    features: [
+      "Pagamento de contas com cartão",
+      "Instalado no estabelecimento",
+      "Atrai clientes ao EC",
+      "Aumenta ticket médio",
+      "Fácil de operar",
+      "Sem necessidade de integração complexa",
+    ],
+    highlight: "Mais clientes no seu estabelecimento",
   },
 ];
 
@@ -102,8 +134,11 @@ export default function Solucoes() {
                   <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors group-hover:scale-110 duration-300">
                     <produto.icon className="w-7 h-7 text-primary" />
                   </div>
-                  <CardTitle className="group-hover:text-primary transition-colors">{produto.titulo}</CardTitle>
-                  <p className="text-muted-foreground text-sm">{produto.descricao}</p>
+                  <CardTitle className="group-hover:text-primary transition-colors">
+                    {produto.titulo}
+                  </CardTitle>
+                  <p className="text-primary/80 text-sm font-medium italic">{produto.tagline}</p>
+                  <p className="text-muted-foreground text-sm mt-1">{produto.descricao}</p>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 mb-5">

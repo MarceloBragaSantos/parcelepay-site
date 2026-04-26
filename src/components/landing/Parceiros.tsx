@@ -1,42 +1,59 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Calculator, Users, TrendingUp, Handshake } from "lucide-react";
+import { Calculator, Users, TrendingUp, Building2 } from "lucide-react";
 
 export default function Parceiros() {
   return (
     <section id="parceiros" className="py-20 bg-secondary">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <Badge className="mb-4 bg-primary/20 text-primary border-primary/30">
-              Programa de Parceiros
+              Programa de Representantes
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Seja um parceiro ou reseller da ParcelePay
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Represente a ParcelePay.{" "}
+              <span className="text-primary">Ganhe recorrência real.</span>
             </h2>
             <p className="text-white/70 mb-8 leading-relaxed">
-              Contadores, consultores e agências podem oferecer a ParcelePay para seus clientes e
-              ganhar um markup sobre o faturamento bruto de cada operação.
+              Um cliente com R$ 300 mil de faturamento mensal pode gerar
+              R$ 3 mil por mês para o seu bolso — todo mês, automaticamente,
+              enquanto ele usar a plataforma.
+            </p>
+            <p className="text-white/60 mb-8 text-sm leading-relaxed">
+              Você não vende uma máquina. Você constrói uma carteira. Quanto
+              maior o faturamento do seu cliente, maior a sua recorrência.
             </p>
 
             <div className="space-y-4 mb-8">
               {[
                 {
                   icon: Calculator,
-                  titulo: "Para Contadores",
-                  desc: "Ofereça uma solução de redução tributária para seus clientes do Simples. Comissão recorrente enquanto o cliente operar.",
+                  titulo: "Contadores e Escritórios Contábeis",
+                  desc: "Ofereça uma solução de redução tributária para seus clientes do Simples Nacional. Comissão recorrente enquanto o cliente operar.",
                 },
                 {
                   icon: Users,
-                  titulo: "Para Consultores e Agências",
-                  desc: "Revenda a ParcelePay com seu próprio markup. A taxa base é 1% — você define o markup adicional.",
+                  titulo: "Consultores e Agências",
+                  desc: "Indique e ganhe comissão sobre o faturamento bruto de cada cliente ativo. Sem burocracia, sem mensalidade para o representante.",
                 },
                 {
-                  icon: Handshake,
-                  titulo: "Para Empresas (White-label)",
-                  desc: "Crie sua própria solução de pagamento sobre a infraestrutura da Cappta + ParcelePay.",
+                  icon: Building2,
+                  titulo: "Revendas e Distribuidoras",
+                  desc: "Venda a ParcelePay com seu próprio markup, mantendo o cliente na sua base. Suporte comercial e material dedicado.",
                 },
               ].map((item) => (
-                <div key={item.titulo} className="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                <div
+                  key={item.titulo}
+                  className="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/10"
+                >
                   <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
@@ -47,47 +64,74 @@ export default function Parceiros() {
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="space-y-6">
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-              <TrendingUp className="w-8 h-8 text-primary mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Como funciona o ganho</h3>
-              <p className="text-white/60 mb-6">
-                A taxa base é 1% do faturamento bruto do cliente (quando há reseller). Você define seu markup adicional.
-              </p>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-white/10">
-                  <span className="text-white/60 text-sm">Taxa base (ParcelePay)</span>
-                  <span className="text-white font-medium">1%</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-white/10">
-                  <span className="text-white/60 text-sm">Seu markup (você define)</span>
-                  <span className="text-primary font-bold">+ x%</span>
-                </div>
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-white font-medium">Base de cálculo</span>
-                  <span className="text-white font-medium">Faturamento bruto</span>
-                </div>
-              </div>
-
-              <div className="mt-6 p-4 rounded-xl bg-primary/10 border border-primary/20">
-                <p className="text-primary text-sm font-medium mb-1">Exemplo</p>
-                <p className="text-white/80 text-sm">
-                  Cliente com R$100k/mês de faturamento, seu markup de 0,5% =
-                  <strong className="text-primary"> R$500/mês recorrente</strong> por cliente indicado.
-                </p>
-              </div>
-            </div>
 
             <a
               href="#contato"
-              className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold text-lg hover:opacity-90 transition-opacity"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-bold text-lg hover:opacity-90 transition-opacity"
             >
-              Quero ser parceiro
+              Quero ser representante
             </a>
-          </div>
+          </motion.div>
+
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {/* Earnings example card */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+              <TrendingUp className="w-8 h-8 text-primary mb-4" />
+              <h3 className="text-2xl font-bold text-white mb-2">
+                Quanto você pode ganhar
+              </h3>
+              <p className="text-white/60 mb-6 text-sm">
+                Sua comissão é calculada sobre o faturamento bruto de cada cliente ativo
+                na sua carteira — de forma automática e recorrente.
+              </p>
+
+              <div className="space-y-3">
+                {[
+                  { faturamento: "R$ 100 mil/mês", ganho: "R$ 1.000/mês" },
+                  { faturamento: "R$ 300 mil/mês", ganho: "R$ 3.000/mês" },
+                  { faturamento: "R$ 500 mil/mês", ganho: "R$ 5.000/mês" },
+                ].map((ex) => (
+                  <div
+                    key={ex.faturamento}
+                    className="flex justify-between items-center py-3 px-4 rounded-lg bg-white/5 border border-white/10"
+                  >
+                    <span className="text-white/60 text-sm">
+                      Cliente com {ex.faturamento}
+                    </span>
+                    <span className="text-primary font-bold">{ex.ganho}</span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-white/30 text-xs mt-4">
+                * Valores ilustrativos. A comissão final depende do markup acordado.
+              </p>
+            </div>
+
+            {/* White-label note */}
+            <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6">
+              <h3 className="text-white font-semibold mb-2">
+                Quer levar a ParcelePay para a sua base de clientes?
+              </h3>
+              <p className="text-white/60 text-sm mb-4">
+                Para empresas e grupos com alto volume de transações, oferecemos
+                estrutura white-label — sua marca, nossa tecnologia, sua operação
+                escalada.
+              </p>
+              <a
+                href="#contato"
+                className="text-primary text-sm font-semibold hover:opacity-80 transition-opacity"
+              >
+                Falar com o time comercial →
+              </a>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
