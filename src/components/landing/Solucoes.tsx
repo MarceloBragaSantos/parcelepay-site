@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 import Image from "next/image";
@@ -203,7 +202,7 @@ function BackofficeMockup() {
 
 function PlataformaContasIllustration() {
   return (
-    <div className="relative bg-secondary rounded-xl overflow-hidden h-44 select-none">
+    <div className="relative bg-secondary rounded-2xl overflow-hidden min-h-[360px] select-none">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
 
       {/* Store sign */}
@@ -257,7 +256,7 @@ function PlataformaContasIllustration() {
 
 function WhitelabelIllustration() {
   return (
-    <div className="relative bg-secondary rounded-xl overflow-hidden h-44 select-none flex items-center justify-center">
+    <div className="relative bg-secondary rounded-2xl overflow-hidden min-h-[360px] select-none flex items-center justify-center">
       <Image
         src="/assets/cappta-pos-composite.png"
         alt="Maquininha e celular com sua marca"
@@ -401,86 +400,80 @@ export default function Solucoes() {
           </div>
         </motion.div>
 
-        {/* ── Bottom cards: Plataforma de Contas + Whitelabel ── */}
-        <div className="grid md:grid-cols-2 gap-6 mb-10">
-          {/* Plataforma de Contas */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <Card className="h-full hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/50">
-              <div className="p-4">
-                <PlataformaContasIllustration />
-              </div>
-              <CardContent className="pt-0 pb-5 px-5">
-                <Badge className="mb-2 bg-primary/10 text-secondary border-primary/20">Plataforma de Contas</Badge>
-                <h4 className="text-lg font-bold text-secondary mb-1">
-                  Seu cliente paga contas na sua loja.{" "}
-                  <span className="text-primary">Você fatura.</span>
-                </h4>
-                <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
-                  Pagamento de boletos e contas com cartão instalado na loja — transforma o
-                  estabelecimento em destino de fluxo e aumenta o ticket médio.
-                </p>
-                <ul className="space-y-1.5">
-                  {[
-                    "Pagamento de contas com cartão",
-                    "Instalado na loja",
-                    "Atrai clientes ao estabelecimento",
-                    "Aumenta ticket médio",
-                    "Fácil de operar",
-                  ].map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm">
-                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
+        {/* ── Plataforma de Contas ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="grid lg:grid-cols-2 gap-10 items-center mb-20"
+        >
+          <div className="order-2 lg:order-1">
+            <Badge className="mb-3 bg-primary/10 text-secondary border-primary/20">Plataforma de Contas</Badge>
+            <h3 className="text-2xl md:text-3xl font-bold text-secondary mb-2">
+              Seu cliente paga contas na sua loja.{" "}
+              <span className="text-primary">Você fatura.</span>
+            </h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Pagamento de boletos e contas com cartão instalado na loja — transforma o
+              estabelecimento em destino de fluxo e aumenta o ticket médio.
+            </p>
+            <ul className="space-y-2 mb-6">
+              {[
+                "Pagamento de contas com cartão",
+                "Instalado na loja",
+                "Atrai clientes ao estabelecimento",
+                "Aumenta ticket médio",
+                "Fácil de operar",
+                "Sem integração complexa",
+              ].map((f) => (
+                <li key={f} className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="order-1 lg:order-2">
+            <PlataformaContasIllustration />
+          </div>
+        </motion.div>
 
-          {/* Whitelabel */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <Card className="h-full hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/50">
-              <div className="p-4">
-                <WhitelabelIllustration />
-              </div>
-              <CardContent className="pt-0 pb-5 px-5">
-                <Badge className="mb-2 bg-primary/10 text-secondary border-primary/20">Whitelabel</Badge>
-                <h4 className="text-lg font-bold text-secondary mb-1">
-                  Sua marca no produto.{" "}
-                  <span className="text-primary">Nossa tecnologia por trás.</span>
-                </h4>
-                <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
-                  Para clientes com alto potencial e carteira para bancarizar: ofereça toda a
-                  solução ParcelePay sob a sua própria marca, sem abrir mão da tecnologia e do suporte.
-                </p>
-                <ul className="space-y-1.5">
-                  {[
-                    "Maquininha e app com sua marca",
-                    "Portal de gestão personalizado",
-                    "Onboarding de clientes white-label",
-                    "Suporte técnico dedicado",
-                    "Para carteiras de alto TPV",
-                  ].map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm">
-                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
+        {/* ── Whitelabel ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="grid lg:grid-cols-2 gap-10 items-center mb-20"
+        >
+          <WhitelabelIllustration />
+          <div>
+            <Badge className="mb-3 bg-primary/10 text-secondary border-primary/20">Whitelabel</Badge>
+            <h3 className="text-2xl md:text-3xl font-bold text-secondary mb-2">
+              Sua marca no produto.{" "}
+              <span className="text-primary">Nossa tecnologia por trás.</span>
+            </h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Para clientes com alto potencial e carteira para bancarizar: ofereça toda a
+              solução ParcelePay sob a sua própria marca, sem abrir mão da tecnologia e do suporte.
+            </p>
+            <ul className="space-y-2 mb-6">
+              {[
+                "Maquininha e app com sua marca",
+                "Portal de gestão personalizado",
+                "Onboarding de clientes white-label",
+                "Suporte técnico dedicado",
+                "Para carteiras de alto TPV",
+              ].map((f) => (
+                <li key={f} className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
 
         <div className="text-center">
           <a
