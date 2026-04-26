@@ -56,8 +56,8 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              A ParcelePay usa o split de agenda para reduzir sua base tributável
-              automaticamente — sem mudar CNPJ, sem burocracia, sem custo extra.
+              A ParcelePay estrutura o split de agenda para reduzir sua base tributável
+              no Simples Nacional — sem trocar de CNPJ, com toda a operação formalizada.
               Parcelamento em até{" "}
               <strong className="text-primary">21x</strong>.
             </motion.p>

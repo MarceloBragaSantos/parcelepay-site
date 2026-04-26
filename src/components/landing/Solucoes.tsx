@@ -1,43 +1,316 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, Code2, Receipt } from "lucide-react";
+import { Check } from "lucide-react";
 import Image from "next/image";
 
-const complementares = [
-  {
-    icon: Code2,
-    titulo: "Backoffice",
-    tagline: "Gestão completa da sua operação — em tempo real.",
-    descricao: "Portal white-label com relatórios, conciliação automática e controle de estabelecimentos.",
-    features: [
-      "Portal de gestão white-label",
-      "Relatórios e conciliação",
-      "Controle de estabelecimentos",
-      "API de integração",
-      "Webhook em tempo real",
-      "Suporte técnico dedicado",
-    ],
-    highlight: "Integração em minutos",
-  },
-  {
-    icon: Receipt,
-    titulo: "Plataforma de Contas",
-    tagline: "Seu cliente paga contas no seu estabelecimento. Você fatura.",
-    descricao: "Pagamento de contas com cartão instalado no EC — transforma o estabelecimento em destino de fluxo.",
-    features: [
-      "Pagamento de contas com cartão",
-      "Instalado no estabelecimento",
-      "Atrai clientes ao EC",
-      "Aumenta ticket médio",
-      "Fácil de operar",
-      "Sem integração complexa",
-    ],
-    highlight: "Mais clientes no seu estabelecimento",
-  },
-];
+/* ─────────────────────────── MOCKUPS ─────────────────────────── */
+
+function PaymentsMockup() {
+  return (
+    <div className="relative flex items-center justify-center min-h-[360px] bg-secondary rounded-2xl overflow-hidden select-none">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+
+      <div className="relative flex items-end gap-5 px-10 pb-10 pt-14">
+        {/* Phone */}
+        <div className="w-36 bg-[#12122a] rounded-[28px] border-2 border-white/20 shadow-2xl overflow-hidden flex-shrink-0">
+          <div className="h-1 bg-white/10 w-12 rounded-full mx-auto mt-2 mb-1" />
+          <div className="px-3 pb-4">
+            <div className="flex items-center justify-between py-2 mb-2">
+              <Image src="/assets/logo-parcele-pay-new.png" alt="ParcelePay" width={60} height={14} className="h-3.5 w-auto brightness-0 invert" />
+              <div className="w-5 h-5 rounded-full bg-primary/30 flex items-center justify-center">
+                <div className="w-2.5 h-2.5 rounded-full bg-primary/60" />
+              </div>
+            </div>
+            <div className="bg-primary/10 rounded-xl p-2.5 mb-2">
+              <p className="text-white/40 text-[7px] mb-0.5">Saldo disponível</p>
+              <p className="text-white font-bold text-sm">R$ 12.840,00</p>
+              <div className="flex gap-1 mt-1.5">
+                {["PIX", "Pagar", "Extrato"].map((l) => (
+                  <div key={l} className="flex-1 bg-white/10 rounded py-0.5 text-center">
+                    <span className="text-white/60 text-[7px]">{l}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-1">
+              {[
+                { desc: "Split recebido", val: "+R$4.200", pos: true },
+                { desc: "TED enviada", val: "-R$1.000", pos: false },
+                { desc: "PIX recebido", val: "+R$890", pos: true },
+              ].map((t, i) => (
+                <div key={i} className="flex justify-between">
+                  <span className="text-white/50 text-[8px]">{t.desc}</span>
+                  <span className={`text-[8px] font-bold ${t.pos ? "text-primary" : "text-red-400"}`}>{t.val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* POS Machine */}
+        <div className="w-24 bg-[#12122a] rounded-2xl border-2 border-white/20 shadow-2xl overflow-hidden">
+          <div className="bg-black/60 m-2 rounded-lg p-2 mb-1">
+            <p className="text-white/30 text-[7px] text-center mb-0.5">TOTAL</p>
+            <p className="text-primary text-sm font-bold text-center font-mono">R$284,50</p>
+            <div className="bg-primary/20 rounded mt-1 py-0.5 text-center">
+              <p className="text-primary text-[7px] font-bold">INSERIR CARTÃO</p>
+            </div>
+          </div>
+          <div className="px-2 py-1 flex justify-center">
+            <Image src="/assets/logo-parcele-pay-new.png" alt="ParcelePay" width={48} height={12} className="h-3 w-auto brightness-0 invert" />
+          </div>
+          <div className="mx-3 my-1 h-0.5 bg-white/10 rounded" />
+          <div className="grid grid-cols-3 gap-0.5 px-2 pb-2">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, "*", 0, "#"].map((k) => (
+              <div key={k} className="bg-white/10 rounded text-center py-0.5">
+                <span className="text-white/50 text-[7px]">{k}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+        Até 21x sem juros
+      </div>
+    </div>
+  );
+}
+
+function BankingMockup() {
+  return (
+    <div className="relative flex items-center justify-center min-h-[360px] bg-secondary rounded-2xl overflow-hidden select-none">
+      <div className="absolute inset-0 bg-gradient-to-tl from-primary/5 to-transparent" />
+      <div className="relative py-8 px-6">
+        <div className="w-52 bg-[#12122a] rounded-[32px] border-2 border-white/20 shadow-2xl overflow-hidden mx-auto">
+          <div className="h-1 bg-white/10 w-16 rounded-full mx-auto mt-2 mb-1" />
+          <div className="px-4 pb-5">
+            <div className="flex items-center justify-between py-2.5 border-b border-white/10 mb-3">
+              <Image src="/assets/logo-parcele-pay-new.png" alt="ParcelePay" width={80} height={20} className="h-4 w-auto brightness-0 invert" />
+              <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
+                <div className="w-3 h-3 rounded-full bg-primary/50" />
+              </div>
+            </div>
+            <div className="bg-primary/10 border border-primary/30 rounded-2xl p-3 mb-3">
+              <p className="text-white/40 text-[9px] mb-0.5">Conta ParcelePay</p>
+              <p className="text-primary text-2xl font-black mb-1">R$128.450</p>
+              <span className="bg-primary/20 text-white/50 text-[8px] px-2 py-0.5 rounded-full">+R$23.5k hoje</span>
+            </div>
+            <div className="grid grid-cols-4 gap-2 mb-3">
+              {["PIX", "TED", "Pagar", "Extrato"].map((label) => (
+                <div key={label} className="flex flex-col items-center gap-1">
+                  <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center">
+                    <div className="w-4 h-4 rounded-md bg-primary/40" />
+                  </div>
+                  <span className="text-white/50 text-[8px]">{label}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-white/30 text-[9px] uppercase tracking-wider mb-1.5">Últimas movimentações</p>
+            <div className="space-y-2">
+              {[
+                { desc: "Split agenda", val: "+R$12.300", pos: true },
+                { desc: "TED enviada", val: "-R$5.000", pos: false },
+                { desc: "PIX recebido", val: "+R$1.890", pos: true },
+                { desc: "Boleto pago", val: "-R$430", pos: false },
+              ].map((t, i) => (
+                <div key={i} className="flex items-center justify-between py-1 border-b border-white/5">
+                  <div className="flex items-center gap-2">
+                    <div className={`w-1.5 h-1.5 rounded-full ${t.pos ? "bg-primary" : "bg-red-400"}`} />
+                    <span className="text-white/60 text-[10px]">{t.desc}</span>
+                  </div>
+                  <span className={`text-[10px] font-bold ${t.pos ? "text-primary" : "text-red-400"}`}>{t.val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BackofficeMockup() {
+  return (
+    <div className="relative flex items-center justify-center min-h-[360px] bg-secondary rounded-2xl overflow-hidden p-6 select-none">
+      <div className="w-full max-w-sm">
+        <div className="bg-background rounded-t-xl border-2 border-white/20 shadow-2xl overflow-hidden">
+          <div className="bg-secondary px-3 py-2 flex items-center gap-2 border-b border-white/10">
+            <div className="flex gap-1">
+              <div className="w-2 h-2 rounded-full bg-red-400" />
+              <div className="w-2 h-2 rounded-full bg-yellow-400" />
+              <div className="w-2 h-2 rounded-full bg-green-400" />
+            </div>
+            <Image src="/assets/logo-parcele-pay-new.png" alt="ParcelePay" width={64} height={14} className="h-3.5 w-auto brightness-0 invert ml-2" />
+            <span className="text-white/30 text-[9px] ml-1">Backoffice</span>
+          </div>
+          <div className="p-3">
+            <div className="grid grid-cols-3 gap-1.5 mb-2.5">
+              {[
+                { label: "Faturamento", val: "R$143k", cls: "text-secondary" },
+                { label: "Transações", val: "2.841", cls: "text-secondary" },
+                { label: "Economia total", val: "R$48k", cls: "text-primary" },
+              ].map((s) => (
+                <div key={s.label} className="bg-white rounded-lg p-2 border border-border shadow-sm">
+                  <p className="text-[7px] text-muted-foreground leading-none mb-0.5">{s.label}</p>
+                  <p className={`text-xs font-black ${s.cls}`}>{s.val}</p>
+                </div>
+              ))}
+            </div>
+            <div className="bg-white rounded-lg p-2 border border-border mb-2">
+              <p className="text-[7px] text-muted-foreground mb-1.5">Split por dia (últimos 7 dias)</p>
+              <div className="flex items-end gap-1 h-10">
+                {[55, 75, 40, 90, 65, 100, 70].map((h, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 rounded-sm"
+                    style={{ height: `${h}%`, background: i === 5 ? "#6DC200" : "rgba(109,194,0,0.35)" }}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="bg-white rounded-lg border border-border overflow-hidden">
+              <div className="grid grid-cols-3 bg-secondary/5 px-2 py-1.5">
+                {["Estabelecimento", "Split", "Status"].map((h) => (
+                  <span key={h} className="text-[7px] font-semibold text-secondary/50">{h}</span>
+                ))}
+              </div>
+              {[
+                { ec: "Restaurante Silva", val: "R$4.200", ok: true },
+                { ec: "Clínica Vida+", val: "R$7.800", ok: true },
+                { ec: "Salão Bella", val: "R$1.900", ok: false },
+              ].map((r, i) => (
+                <div key={i} className="grid grid-cols-3 px-2 py-1.5 border-t border-border">
+                  <span className="text-[7px] text-secondary truncate">{r.ec}</span>
+                  <span className="text-[7px] font-bold text-secondary">{r.val}</span>
+                  <span className={`text-[7px] font-semibold ${r.ok ? "text-primary" : "text-yellow-500"}`}>
+                    {r.ok ? "✓ Liquidado" : "⏳ Pendente"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="bg-white/15 h-2.5 rounded-b mx-3 border border-white/20 border-t-0" />
+        <div className="bg-white/8 h-1 rounded-b mx-6" />
+      </div>
+    </div>
+  );
+}
+
+function PlataformaContasIllustration() {
+  return (
+    <div className="relative bg-secondary rounded-xl overflow-hidden h-44 select-none">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+
+      {/* Store sign */}
+      <div className="absolute top-3 left-0 right-0 flex justify-center">
+        <div className="bg-primary/20 border border-primary/40 rounded-lg px-3 py-1 flex items-center gap-1.5">
+          <Image src="/assets/logo-parcele-pay-new.png" alt="ParcelePay" width={52} height={12} className="h-3 w-auto brightness-0 invert" />
+          <span className="text-primary text-[8px] font-bold">· Pague contas aqui</span>
+        </div>
+      </div>
+
+      {/* Counter */}
+      <div className="absolute bottom-0 left-0 right-0 px-4 pb-3">
+        <div className="bg-white/10 rounded-xl border border-white/20 p-3">
+          <div className="flex items-start gap-3">
+            {/* POS */}
+            <div className="w-14 bg-[#12122a] rounded-lg border border-white/20 overflow-hidden flex-shrink-0">
+              <div className="bg-black/60 m-1 rounded p-1">
+                <p className="text-primary text-[8px] font-bold text-center font-mono">R$284,50</p>
+                <p className="text-white/30 text-[6px] text-center">BOLETO</p>
+              </div>
+              <div className="grid grid-cols-3 gap-px px-1 pb-1">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((k) => (
+                  <div key={k} className="bg-white/10 rounded text-center py-px">
+                    <span className="text-white/40 text-[6px]">{k}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Bills */}
+            <div className="flex-1 space-y-1.5">
+              {[
+                { desc: "Conta de luz", val: "R$187,40", active: false },
+                { desc: "IPTU parcela 3", val: "R$284,50", active: true },
+                { desc: "Telefone", val: "R$89,90", active: false },
+              ].map((b, i) => (
+                <div key={i} className={`flex justify-between items-center py-0.5 ${i < 2 ? "border-b border-white/10" : ""} ${b.active ? "opacity-100" : "opacity-50"}`}>
+                  <div className="flex items-center gap-1">
+                    <div className={`w-1.5 h-1.5 rounded-full ${b.active ? "bg-primary" : "bg-white/30"}`} />
+                    <span className="text-white text-[9px]">{b.desc}</span>
+                  </div>
+                  <span className={`text-[9px] font-bold ${b.active ? "text-primary" : "text-white/50"}`}>{b.val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function WhitelabelIllustration() {
+  return (
+    <div className="relative bg-secondary rounded-xl overflow-hidden h-44 select-none">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+
+      <div className="absolute top-3 right-3">
+        <div className="bg-primary text-primary-foreground px-2 py-0.5 rounded-full text-[8px] font-bold">
+          Sua marca, nosso motor
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center gap-3 px-4 pb-3">
+        {/* Mini phone */}
+        <div className="w-20 bg-[#12122a] rounded-2xl border-2 border-white/20 shadow-xl overflow-hidden">
+          <div className="h-0.5 bg-white/10 w-8 rounded-full mx-auto mt-1.5 mb-1" />
+          <div className="px-2 pb-2">
+            <div className="bg-white/10 rounded-lg p-1.5 mb-1.5 text-center">
+              <p className="text-white/30 text-[7px] italic font-medium">SUA MARCA AQUI</p>
+            </div>
+            <div className="bg-primary/10 rounded p-1 mb-1">
+              <p className="text-white/60 text-[6px]">Saldo</p>
+              <p className="text-primary text-[9px] font-bold">R$45.200</p>
+            </div>
+            <div className="space-y-0.5">
+              {["+R$8.400", "+R$2.100"].map((v, i) => (
+                <div key={i} className="flex justify-between">
+                  <div className="w-1 h-1 rounded-full bg-primary mt-0.5" />
+                  <span className="text-primary text-[7px] font-bold">{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mini machine */}
+        <div className="w-16 bg-[#12122a] rounded-xl border-2 border-white/20 shadow-xl overflow-hidden">
+          <div className="bg-black/60 m-1.5 rounded p-1.5">
+            <p className="text-primary text-[9px] font-mono font-bold text-center">R$890</p>
+          </div>
+          <div className="px-1.5 py-1 text-center">
+            <p className="text-white/25 text-[7px] italic">SUA MARCA AQUI</p>
+          </div>
+          <div className="grid grid-cols-3 gap-px px-1.5 pb-1.5">
+            {[1, 2, 3, 4, 5, 6].map((k) => (
+              <div key={k} className="bg-white/10 rounded text-center py-px">
+                <span className="text-white/40 text-[6px]">{k}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────── SECTION ─────────────────────────── */
 
 export default function Solucoes() {
   return (
@@ -55,7 +328,7 @@ export default function Solucoes() {
           </p>
         </div>
 
-        {/* Payments — featured */}
+        {/* ── Payments ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,16 +336,7 @@ export default function Solucoes() {
           viewport={{ once: true }}
           className="grid lg:grid-cols-2 gap-10 items-center mb-20"
         >
-          <div className="relative rounded-2xl overflow-hidden bg-secondary flex items-center justify-center min-h-[340px]">
-            <Image
-              src="/assets/cappta-pos-composite.png"
-              alt="Maquininhas de pagamento — P2, L300, A910"
-              width={700}
-              height={500}
-              className="object-contain w-full h-full"
-            />
-          </div>
-
+          <PaymentsMockup />
           <div>
             <Badge className="mb-3 bg-primary/10 text-secondary border-primary/20">Payments</Badge>
             <h3 className="text-2xl md:text-3xl font-bold text-secondary mb-2">
@@ -99,13 +363,10 @@ export default function Solucoes() {
                 </li>
               ))}
             </ul>
-            <div className="inline-block px-4 py-2 rounded-lg bg-primary/10 text-secondary text-sm font-medium border border-primary/20">
-              PIX: 1,55% &nbsp;|&nbsp; Cartão: a partir de 2,80%
-            </div>
           </div>
         </motion.div>
 
-        {/* Banking — featured (reversed) */}
+        {/* ── Banking ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -139,56 +400,127 @@ export default function Solucoes() {
               ))}
             </ul>
           </div>
-
-          <div className="order-1 lg:order-2 relative rounded-2xl overflow-hidden bg-secondary flex items-center justify-center min-h-[340px]">
-            <Image
-              src="/assets/cappta-banking.png"
-              alt="App Conta Digital ParcelePay"
-              width={600}
-              height={700}
-              className="object-contain w-full h-full max-h-[420px]"
-            />
+          <div className="order-1 lg:order-2">
+            <BankingMockup />
           </div>
         </motion.div>
 
-        {/* Complementares — 2 cards */}
+        {/* ── Backoffice ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="grid lg:grid-cols-2 gap-10 items-center mb-20"
+        >
+          <BackofficeMockup />
+          <div>
+            <Badge className="mb-3 bg-primary/10 text-secondary border-primary/20">Backoffice</Badge>
+            <h3 className="text-2xl md:text-3xl font-bold text-secondary mb-2">
+              Gestão completa da sua operação.{" "}
+              <span className="text-primary">Em tempo real.</span>
+            </h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Portal white-label com relatórios, conciliação automática e controle
+              de estabelecimentos — tudo em um único painel.
+            </p>
+            <ul className="space-y-2 mb-6">
+              {[
+                "Portal de gestão white-label",
+                "Relatórios e conciliação automática",
+                "Controle de estabelecimentos",
+                "API de integração",
+                "Webhook em tempo real",
+                "Suporte técnico dedicado",
+              ].map((f) => (
+                <li key={f} className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+
+        {/* ── Bottom cards: Plataforma de Contas + Whitelabel ── */}
         <div className="grid md:grid-cols-2 gap-6 mb-10">
-          {complementares.map((produto, i) => (
-            <motion.div
-              key={produto.titulo}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="group"
-            >
-              <Card className="h-full hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/50">
-                <CardHeader>
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                    <produto.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <CardTitle className="group-hover:text-primary transition-colors">
-                    {produto.titulo}
-                  </CardTitle>
-                  <p className="text-primary/80 text-sm font-medium italic">{produto.tagline}</p>
-                  <p className="text-muted-foreground text-sm mt-1">{produto.descricao}</p>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 mb-5">
-                    {produto.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2 text-sm">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Badge variant="secondary" className="w-full justify-center py-2 text-xs">
-                    {produto.highlight}
-                  </Badge>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+          {/* Plataforma de Contas */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Card className="h-full hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/50">
+              <div className="p-4">
+                <PlataformaContasIllustration />
+              </div>
+              <CardContent className="pt-0 pb-5 px-5">
+                <Badge className="mb-2 bg-primary/10 text-secondary border-primary/20">Plataforma de Contas</Badge>
+                <h4 className="text-lg font-bold text-secondary mb-1">
+                  Seu cliente paga contas na sua loja.{" "}
+                  <span className="text-primary">Você fatura.</span>
+                </h4>
+                <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
+                  Pagamento de boletos e contas com cartão instalado na loja — transforma o
+                  estabelecimento em destino de fluxo e aumenta o ticket médio.
+                </p>
+                <ul className="space-y-1.5">
+                  {[
+                    "Pagamento de contas com cartão",
+                    "Instalado na loja",
+                    "Atrai clientes ao estabelecimento",
+                    "Aumenta ticket médio",
+                    "Fácil de operar",
+                  ].map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Whitelabel */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <Card className="h-full hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/50">
+              <div className="p-4">
+                <WhitelabelIllustration />
+              </div>
+              <CardContent className="pt-0 pb-5 px-5">
+                <Badge className="mb-2 bg-primary/10 text-secondary border-primary/20">Whitelabel</Badge>
+                <h4 className="text-lg font-bold text-secondary mb-1">
+                  Sua marca no produto.{" "}
+                  <span className="text-primary">Nossa tecnologia por trás.</span>
+                </h4>
+                <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
+                  Para clientes com alto potencial e carteira para bancarizar: ofereça toda a
+                  solução ParcelePay sob a sua própria marca, sem abrir mão da tecnologia e do suporte.
+                </p>
+                <ul className="space-y-1.5">
+                  {[
+                    "Maquininha e app com sua marca",
+                    "Portal de gestão personalizado",
+                    "Onboarding de clientes white-label",
+                    "Suporte técnico dedicado",
+                    "Para carteiras de alto TPV",
+                  ].map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
 
         <div className="text-center">
